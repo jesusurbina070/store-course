@@ -1,11 +1,153 @@
-.contentAuth{
+.contentAuth {
+  display: flex;
+  position: relative;
+  background-color: #17191a;
+  color: white;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 8rem;
+  &__title {
+    font-size: 40px;
+    font-weight: 600;
+  }
+  &__subtitle {
+    font-weight: 300;
+  }
+  &__Card {
+    width: 91px;
+    height: 152px;
+    transform: skewY(-25deg);
+    border-radius: 4px;
+  }
+  &__CardsContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  &__CardsContainer.rotate {
+    transform: rotateZ(180deg) rotateX(180deg);
+  }
+
+  &__cardContainer {
     display: flex;
-    width: 50%;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5rem;
-    &__title{
-        font-size: 40px;
+    position: absolute;
+  }
+  &__cardContainer.top-left {
+    top: 24px;
+    left: 0;
+    &::after {
+      content: "";
+      width: 91px;
+      height: 152px;
+      right: -6px;
+      top: 31px;
+      transform: skewY(-25deg);
+      background: #323337;
+      position: absolute;
+      z-index: 0;
+      border-radius: 4px;
     }
-    &__subtitle{}
+    & div:nth-child(1) {
+      height: 84px;
+      width: 51.75px;
+      position: relative;
+      bottom: 58px;
+      background: #323337;
+    }
+
+    & div:nth-child(2) {
+      position: relative;
+      left: 27px;
+      z-index: 1;
+      background-image: url(https://i.imgur.com/7B3Xmil.jpg);
+      background-size: cover;
+      background-position-x: center;
+    }
+  }
+  &__cardContainer.top-right {
+    top: 72px;
+    right: -50px;
+    gap: 2rem;
+
+    & div:nth-child(1) {
+      height: 65px;
+      width: 38px;
+      background-color: #89d5a9;
+    }
+    & div:nth-child(2) {
+      background-color: #89d5a9;
+    }
+  }
+
+  &__cardContainer.bottom-left {
+    bottom: -41px;
+    left: 25px;
+
+    & div:nth-child(1) {
+      height: 117px;
+      width: 74.5px;
+      position: relative;
+      top: 74px;
+      left: 21px;
+      background-color: #323337;
+    }
+    & div:nth-child(2) {
+      height: 84px;
+      width: 51.75px;
+      position: relative;
+      left: 52px;
+      top: 18px;
+      background-color: #323337;
+    }
+
+    & div:nth-child(3) {
+      width: 138.8px;
+      height: 252.8px;
+      position: relative;
+      top: 100px;
+      background-color: #323337;
+    }
+  }
+  &__cardContainer.bottom-right {
+    bottom: 80px;
+    right: -50px;
+    gap: 3rem;
+
+    &::after {
+      content: "";
+      width: 91px;
+      height: 152px;
+      left: 66px;
+      top: 31px;
+      transform: skewY(-25deg);
+      background: #9353cf;
+      position: absolute;
+      z-index: 0;
+      border-radius: 4px;
+    }
+    & div:nth-child(1) {
+      align-self: flex-end;
+      height: 65px;
+      width: 38px;
+      position: relative;
+      top: 60px;
+      background-color: #9353cf;
+    }
+    & div:nth-child(2) {
+      z-index: 1;
+      background-image: url(https://i.imgur.com/KrJQVEA.jpg);
+      background-size: cover;
+      background-position-x: center;
+    }
+  }
+}
+
+
+@media (max-width: 1240px){
+  .contentAuth{
+    display: none;
+  }
 }

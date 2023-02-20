@@ -1,0 +1,13 @@
+.signup{
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+@media (max-width: 1240px){
+    .signup{
+       flex-direction: column;
+       align-items: center;
+    } 
+ }

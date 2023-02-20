@@ -1,4 +1,14 @@
 .login{
     display: flex;
     min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+} 
+
+@media (max-width: 1240px){
+ .login{
+    flex-direction: column;
+    align-items: center;
+    
+ } 
 }

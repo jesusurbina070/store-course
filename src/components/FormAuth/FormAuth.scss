@@ -1,32 +1,179 @@
-.formAuth{
-      width: 50%;
-      display: grid;
-      align-content: center;
-      padding: 0 5rem;
-    &__pageName{
-        align-self: start;
-    }
-    &__form{
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-    }
-    &__title{
-        font-size: 30px;
+.formAuth {
+  width: 50%;
+  padding: 0 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
+  &__pageName {
+    position: absolute;
+    top: 2rem;
+  }
+  &__pageName.left {
+    left: 2rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+  }
+  &__title {
+    font-size: 30px;
+  }
+  &__inputsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__label {
+    display: flex;
+    width: 100%;
+    border: 2px solid #8f8f8f;
+    align-items: center;
+    border-radius: 0.4rem;
+    padding: 0.6rem 0.9rem;
+  }
+
+  &__input {
+    border: none;
+    width: 100%;
+    padding-left: 0.6rem;
+    outline: none;
+  }
+
+  &__showPwd {
+    cursor: pointer;
+  }
+  &__label:has(&__input:focus) {
+    border: 2px solid #323337;
+  }
+  &__input::placeholder {
+    font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif1;
+    font-weight: 400;
+  }
+
+  &__errorMessage {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #d758a3;
+    font-weight: bold;
+  }
+
+  &__buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__linkrow {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__link {
+    font-size: 14px;
+    margin-right: 10px;
+    color: #8f8f8f;
+    text-decoration: none;
+  }
+  &__link.register {
+    font-size: 17px;
+  }
+
+  &__buttonrow {
+    width: 60%;
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    width: 50%;
+    padding: 0.6rem 0;
+    border: none;
+    background-color: #9353cf;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 3px solid #9353cf;
+    cursor: pointer;
+    text-align: center;
+    transition: 1s;
+  }
+
+  &__button.gmail {
+    background-color: #ffff;
+    color: #9353cf;
+  }
+
+  &__button.gmail.none {
+    display: none;
+  }
+}
+
+@media (max-width: 1240px) {
+  .formAuth {
+    height: 100vh;
+    width: 70%;
+    padding: 0 6rem;
+
+    &__pageName {
+      right: 2rem;
     }
-    &__input{
-        width: 75%;
-        padding: .3rem 1.8rem;
-        border-radius: .4rem;
-        outline: none;
-        margin: 5px 0;
+
+    &__button.reset{
+      width: 30%;
+      align-self: flex-end;
     }
-    &__input::placeholder{
-        padding: 0 ;
+  }
+
+  @media (max-width: 940px) {
+    .formAuth {
+      width: 90%;
     }
-    &__inputsContainer{}
-    &__buttonsContainer{}
-    &__link{}
-    &__button{} 
+  }
+
+  @media (max-width: 731px) {
+    .formAuth {
+      padding: 0 5rem;
+    }
+  }
+
+  @media (max-width:623px) {
+    .formAuth {
+      padding: 0 3rem;
+      width: 100%;
+    }
+  }
+  @media (max-width:501px){
+   .formAuth{
+    &__buttonsContainer{
+     flex-wrap: wrap-reverse;
+      gap: 20px;
+      
+    }
+
+    &__form{
+      gap: 1.3rem;
+    }
+
+    &__buttonrow {
+      width: 100%;
+    }
+
+    &__linkrow{
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    &__button.reset{
+      width: 100%;
+      align-self: flex-end;
+    }
+   }
+  }
 }
