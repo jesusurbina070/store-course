@@ -43,7 +43,7 @@ const initialModule = {
   id: "",
 };
 
-export const createCourse = async (data, navigate) => {
+export const createCourse = async (data) => {
   try {
     const newId = uuidv4();
     const imageData = await uploadCourseImage(data.image[0]);
@@ -55,7 +55,7 @@ export const createCourse = async (data, navigate) => {
     };
 
     await setDoc(doc(db, "courses", newCourse.id), newCourse);
-    navigate(`editCourse/${newCourse.id}`);
+
   } catch (err) {
     console.log(err);
   }
@@ -174,7 +174,7 @@ export const uploadCourseImage = async (file) => {
   try {
     const storageRef = ref(storage, `courses/${uuidv4()}`);
     const image = await uploadBytes(storageRef, file);
-    console.log(image)
+    console.log(image);
     const url = await getDownloadURL(storageRef);
     return { url, name: image.metadata.fullPath };
   } catch (err) {

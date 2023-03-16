@@ -1,1 +1,1 @@
-export {default as CourseClasses} from "./CourseClasses"
+export {default as CourseClasses} from "./CourseClassesEdit"

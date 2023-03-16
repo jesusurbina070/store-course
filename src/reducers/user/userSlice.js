@@ -1,37 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 
+const EmptyUserState = {
+  uid: "",
+  name: "",
+  email: "",
+  rol: "",
+  courses: [],
+  orders: [],
+};
+
+export const setAndPersistUser = (userInfo) => {
+  sessionStorage.setItem("user", JSON.stringify({ ...userInfo }));
+};
+
+export const resetSessionStorage = () => {
+  sessionStorage.removeItem("user");
+};
 
 export const userSlice = createSlice({
   name: "user",
-  initialState: {
-    uid: "",
-    name: "",
-    email: "",
-    rol: "",
-    courses: [],
-    orders: [],
-    isAuth: false,
-  },
+  initialState: sessionStorage.getItem("user")
+    ? JSON.parse(sessionStorage.getItem("user"))
+    : EmptyUserState,
   reducers: {
     setUser: (state, action) => {
-      state.uid = action.payload.uid;
-      state.name = action.payload.name;
-      state.email = action.payload.email;
-      state.rol = action.payload.rol;
-      state.courses = action.payload.courses;
-      state.orders = action.payload.orders;
-      state.isAuth = true;
+      const result = action.payload;
+      setAndPersistUser(action.payload);
+      return action.payload;
     },
 
-    unSetUser: (state) => {
-      state.uid = "";
-      state.name = "";
-      state.email = "";
-      state.rol = "";
-      state.courses = [];
-      state.orders = [];
-      state.isAuth = false
-    },
+    unSetUser: () => {
+      resetSessionStorage()
+      return EmptyUserState
+    }
   },
 });
 

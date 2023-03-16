@@ -12,5 +12,3 @@ export function AuthProvider ({children}){
         </context.Provider>
     )
 }
-
- AuthProvider

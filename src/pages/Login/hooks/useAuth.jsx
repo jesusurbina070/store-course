@@ -19,14 +19,6 @@ import { setUser } from "../../../reducers/user/userSlice";
 import { toast } from "react-toastify";
 import { setNewUser, getUserData } from "../../../services/firebase.services";
 
-const initialUser = {
-  name: "",
-  email: "",
-  rol: "studient",
-  courses: [],
-  orders: [],
-};
-
 function useAuth() {
   const registerAuth = useFetch({
     position: "bottom-right",
@@ -38,7 +30,6 @@ function useAuth() {
     progress: undefined,
     theme: "light",
   });
-  // const { error } = registerAuth;
   const loginAuth = useFetch({
     position: "bottom-left",
     autoClose: 5000,
@@ -49,8 +40,6 @@ function useAuth() {
     progress: undefined,
     theme: "light",
   });
-
-  const { error } = loginAuth;
   const googleRegisterAuth = useFetch();
   const formRegister = useForm();
   const formLogin = useForm();
@@ -58,53 +47,38 @@ function useAuth() {
   const dispatch = useDispatch();
   const logInNavegate = useNavigate();
 
-  const handleOnAuthChanged = async  (currentUser) => {
-    if(currentUser){
-      const userData = await getUserData(currentUser.uid)
-      dispatch(
-       setUser({
-         ...userData.user
-       })
-      )
-      logInNavegate("/dashboard")
-    }
-   
+  const handleOnAuthChanged = async (currentUser) => {
+    try {
+      if (currentUser) {
+        const response = await getUserData(currentUser.uid);
+        dispatch(
+          setUser({
+            ...response?.data(),
+          })
+        );
+      }
+    } catch (err) { }
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, handleOnAuthChanged) 
+    onAuthStateChanged(auth, handleOnAuthChanged);
   }, []);
 
   const handleRegister = async (data) => {
-    const { name, email, password } = data;
     try {
       const userCredential = await registerAuth.fetchingAuth(
-        signup(email, password)
+        signup(data.email, data.password)
       );
-      let { uid } = userCredential.user;
-      let newUser = { ...initialUser, name, email, uid };
-      await setNewUser(newUser);
-    } catch {}
-
-    // if (userCredential.user.uid) {
-    //
-    //   let newUser = { ...initialUser, name, email, uid };
-    //   await setDoc(doc(db, "users", uid), newUser);
-    // }
+      setNewUser({ ...data, uid: userCredential.user.uid });
+    } catch { }
   };
 
   const handleLogin = async (data) => {
-    console.log(data)
-    const userCredential = await loginAuth.fetchingAuth(
-      signIn(data.email, data.password)
-    );
-    // console.log(await userCredential.user.uid != undefined)
-    // if(userCredential.user.uid){
-    //   const dataUser = await fetchUser(userCredential.user.uid)
-    //   dispatch(setUser({
-    //     ...dataUser
-    //   }))
-    // }
+    try {
+      const userCredential = await loginAuth.fetchingAuth(
+        signIn(data.email, data.password)
+      );
+    } catch (err) { }
   };
 
   const handleResetPassword = async (data) => {
@@ -112,21 +86,11 @@ function useAuth() {
   };
 
   const handleClickGoogleAuth = async () => {
-    const userCredential = await googleRegisterAuth.fetchingAuth(authGoogle());
-    // if (userCredential.user.uid) {
-    //   const userData = await fetchUser(userCredential.user.uid);
-    //   if (!userData.exist) {
-    //     let { uid, displayName, email } = userCredential.user;
-    //     let newUser = { ...initialUser, name: displayName, email, uid };
-    //     await setDoc(doc(db, "users", uid), newUser);
-    //     dispatch(
-    //       setUser({
-    //         ...newUser,
-    //       })
-    //     );
-    //     logInNavegate("/dashboard");
-    //   }
-    // }
+    try {
+      const userCredential = await googleRegisterAuth.fetchingAuth(
+        authGoogle()
+      );
+    } catch (err) { }
   };
 
   return {
@@ -134,10 +98,10 @@ function useAuth() {
     loginAuth,
     formRegister,
     formResetPassword,
+    formLogin,
     handleRegister,
     handleLogin,
     handleClickGoogleAuth,
-    formLogin,
     logInNavegate,
     handleResetPassword,
   };

@@ -1,10 +1,22 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../Firebase/firebase";
 
-export const setNewUser = (userData) =>
-  setDoc(doc(db, "users", userData.uid), userData);
-
-export const getUserData = async (uid) => {
-  const response =  await getDoc(doc(db, "users", uid));
-  return { user: response.data(), exist: response.exists() };
+const initialUser = {
+  name: "",
+  email: "",
+  rol: "studient",
+  courses: [],
+  orders: [],
 };
+
+export const setNewUser = async (userData) => {
+  try {
+    const newUser = { ...initialUser, ...userData };
+    console.log(newUser);
+    setDoc(doc(db, "users", newUser.uid), newUser);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getUserData = (uid) => getDoc(doc(db, "users", uid));

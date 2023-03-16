@@ -19,6 +19,7 @@ function SignUp() {
     handleSubmit,
   } = formLogin;
   const { ToastContainer } = loginAuth;
+  
   return (
     <div className="signup">
       <FormAuth
@@ -28,7 +29,7 @@ function SignUp() {
         handleAuth={handleLogin}
         links={[
           { style: "formAuth__link", name: "Registrarme", path:"/signup" },
-          { style: "formAuth__link", name: "Olvide mi contrasena", path:"/login/resetPassword"},
+          { style: "formAuth__link", name: "Olvide mi contrasena", path:"/resetPassword"},
         ]}
         buttonName="Iniciar Sesión"
         loading={loginAuth.loading}

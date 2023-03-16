@@ -5,3 +5,6 @@ export * from "./FormCreate";
 export * from "./FormAuth";
 export * from "./MultiSelect";
 export * from "./Spinner";
+export * from "./FilterBar";
+export * from "./Header";
+

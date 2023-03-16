@@ -1,4 +1,5 @@
-import { FormCreate, MultiSelect, DashboardNav } from "../../components/";
+import { FormCreate, MultiSelect, DashboardNav, Header } from "../../components/";
+import { Title, User } from "../../components/Header/components"
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import {
@@ -19,19 +20,19 @@ function CreateCourse() {
 
   const handleCreateCourseForm = async (data) => {
     console.log(data);
-    createCourse(data, navigate);
+    createCourse(data);
   };
 
   const handleChange = (select) => {
     setValue("categories", select);
   };
-  const values = [];
 
   return (
     <>
-      <DashboardNav />
-      <div>
-        <h2>Subir curso</h2>
+      <Header>
+        <Title title="Subir Usuario"/>
+        <User />  
+      </Header>
         <FormCreate
           buttonName="Añadir Curso"
           handleSubmit={handleSubmit}
@@ -49,7 +50,7 @@ function CreateCourse() {
             <MultiSelect
               setValues={setValue}
               register={register}
-              selectValues={values}
+              type="categories"
             />
             <input
               className="FormCreate__input"
@@ -75,7 +76,6 @@ function CreateCourse() {
             />
           </div>
         </FormCreate>
-      </div>
     </>
   );
 }

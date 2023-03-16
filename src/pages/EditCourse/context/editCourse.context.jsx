@@ -26,7 +26,17 @@ export const EditCourseProvider = ({ children }) => {
 
   return (
     <EditCourseContext.Provider
-      value={{ course, modules, classes, classForm, moduleForm, editClass, setEditClass, editModule, setEditModule}}
+      value={{
+        course,
+        modules,
+        classes,
+        classForm,
+        moduleForm,
+        editClass,
+        setEditClass,
+        editModule,
+        setEditModule
+      }}
     >
       {children}
     </EditCourseContext.Provider>

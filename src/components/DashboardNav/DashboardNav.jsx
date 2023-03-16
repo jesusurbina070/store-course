@@ -1,15 +1,15 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
-function DashboardNav () {
-    
-    return(
+function DashboardNav() {
+    const mainpath = "dashboard"
+   
+    return (
         <div>
             <h4>Nombre</h4>
             <nav>
                 <ul>
-                    <li><Link>Cursos</Link></li>
-                    <li><Link>Ordenes</Link></li>
-                    <li><Link>Usuarios</Link></li>  
+                    <li><Link to={`/${mainpath}/courses`}>Cursos</Link></li>
+                    <li><Link to={`/${mainpath}/users`}>Usuarios</Link></li>
                 </ul>
             </nav>
         </div>
