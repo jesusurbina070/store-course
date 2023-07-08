@@ -3,7 +3,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { matchPath } from "react-router-dom";
 import { useEditCourse } from "../../pages/EditCourse/context/editCourse.context";
 import ModuleView from "./components/ModuleEdit/ModuleEdit";
-function CourseClassesEdit() {
+function CourseClassesEdit({edit}) {
   const { modules } = useEditCourse()
   return (
     <div>

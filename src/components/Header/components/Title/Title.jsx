@@ -2,9 +2,7 @@ import React from 'react'
 
 function Title({title}) {
   return (
-    <div>
-        <h1>{title}</h1>
-    </div>
+        <h1 className='header__title'>{title}</h1>
   )
 }
 

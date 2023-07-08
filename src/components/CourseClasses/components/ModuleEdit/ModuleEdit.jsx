@@ -4,7 +4,7 @@ import { deleteModule } from '../../../../services/firebase.courses.services';
 import ClassView from '../ClassEdit/ClassEdit';
 
 
-function ModuleEdit({ module, classes }) {
+function ModuleEdit({ module }) {
   const { course, classes, moduleForm, setEditModule } = useEditCourse()
   const { name } = module;
   const { setValue } = moduleForm;
@@ -14,16 +14,12 @@ function ModuleEdit({ module, classes }) {
     values.map(([key, value]) => setValue(key, value))
     setEditModule(true)
   }
-
-  const handleDeleteModule = (courseId, module) => {
-    deleteModule(courseId, module)
-  }
-
+  
   return (
     <div>
       <h3>{name}</h3>
       <button onClick={() => handleEditModule(module)}>editar</button>
-      <button onClick={() => handleDeleteModule(course.id, module)}>Eliminar</button>
+      <button onClick={() => deleteModule(course.id, module)}>Eliminar</button>
       <div>
         {classes?.filter((c) => c.moduleId === module.id).map((data) => (
           <ClassView key={data.id} classData={data} />

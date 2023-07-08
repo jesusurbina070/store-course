@@ -1,0 +1,16 @@
+.FilterBar-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.createLink{
+    font-size: 18px;
+    font-weight: 600;
+    padding: .6rem 1.5rem;
+    background-color:  #9353CF;;
+    text-decoration: none;
+    color: white;
+    border-radius: .5rem;
+    margin-bottom: 45px;
+}

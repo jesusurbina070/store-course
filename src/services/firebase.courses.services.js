@@ -53,9 +53,7 @@ export const createCourse = async (data) => {
       image: imageData,
       id: newId,
     };
-
     await setDoc(doc(db, "courses", newCourse.id), newCourse);
-
   } catch (err) {
     console.log(err);
   }

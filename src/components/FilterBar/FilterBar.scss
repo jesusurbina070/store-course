@@ -1,0 +1,18 @@
+.FilterBar {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 45px;
+
+  &__link {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 0.6rem 0;
+    color: #fff;
+  }
+
+}
+
+.isActive {
+  color: #89d5a9;
+  border-bottom: 1px solid #89d5a9;
+}

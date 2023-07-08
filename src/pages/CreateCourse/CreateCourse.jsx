@@ -48,7 +48,7 @@ function CreateCourse() {
               placeholder="Nombre del curso"
             />
             <MultiSelect
-              setValues={setValue}
+              setValue={setValue}
               register={register}
               type="categories"
             />

@@ -1,14 +1,26 @@
-import React from 'react'
-import Course from '../Course/Course'
+import React from "react";
+import Course from "../Course/Course";
+import "./CoursesList.scss";
 
-function CoursesList({courses}) {
+function CoursesList({ courses, search }) {
+  const searchToLowerCase = search?.toLowerCase();
+  const filterCourses = !!search
+    ? courses?.filter(
+        ({ name, description, categories }) =>
+          name?.toLowerCase().includes(searchToLowerCase) ||
+          description?.toLowerCase().includes(searchToLowerCase) ||
+          categories?.some(
+            (category) => category.toLowerCase() === searchToLowerCase
+          )
+      )
+    : courses;
   return (
-    <div>
-        {courses?.map((course) => (
-          <Course data={course} />
-        ))} 
-    </div>
-  )
+    <section className="CoursesList">
+      {filterCourses?.map((course) => (
+        <Course data={course} />
+      ))}
+    </section>
+  );
 }
 
-export default CoursesList
+export default CoursesList;

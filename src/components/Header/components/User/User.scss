@@ -1,0 +1,46 @@
+.User {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+
+  &__ul {
+    animation: .3s;
+    list-style: none;
+    width: 60%;
+    position: absolute;
+    top: 40px;
+    right: 0; 
+  }
+
+  &__button {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background-color: #323337;
+    color: #fff;
+    padding: .4rem;
+
+  }
+
+
+  &__imgContainer {
+
+  }
+
+  &__image {
+    background-color: #c4c4c4;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    font-size: 18px;
+  }
+
+  &__dropdown {
+    cursor: pointer;
+    color: #838587;
+  }
+}

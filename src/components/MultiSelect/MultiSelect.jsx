@@ -2,42 +2,36 @@ import React, { useState } from 'react'
 
 const values = [
     "Audio Visual",
-    "Programación",
+    "Programacion",
     "Diseño",
     "Marketing",
-
 ]
 
 function MultiSelect({ setValue, register, type}) {
     const [selected, setSelected] = useState([])
-    const [options, setOptions] = useState(values)
-
-
-
 
     const handleClick = (option) => {
-        setSelected(prev => [...prev, option])
-        setValue(type, selected)
-        const newOption = options.filter((o => o !== option))
-        setOptions(newOption)
+        const newOption = [...selected, option] 
+        setSelected(newOption)
+        setValue(type, newOption)
+        console.log(newOption)
     }
 
     const deleteValue = (v) => {
         const newValue = selected?.filter((o) => o != v)
         setSelected(newValue)
         setValue(type, newValue)
-        setOptions([...options, v].sort())
     }
 
     return (
         <div>
             <label {...register("categories", { required: true })} htmlFor="">
-                {selected?.length === 0 ? "Selecciona una opción" : selected?.map((selected) => (
-                    <div>{selected} <span><button onClick={() => deleteValue(selected)}>delate</button></span></div>
+                {selected?.length === 0 ? "Selecciona una opción" : selected?.map((s) => (
+                    <div>{s} <span><button onClick={() => deleteValue(s)}>delate</button></span></div>
                 ))}
             </label>
             <div>
-                {options?.map((option) => (
+                {values?.filter((option) => !selected.includes(option)).map((option) => (
                     <div onClick={() => handleClick(option)}>{option}</div>
                 ))}
             </div>

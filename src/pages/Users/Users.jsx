@@ -7,7 +7,6 @@ import { db } from '../../Firebase/firebase'
 import { UserList } from './components/'
 
 const roles = [
-    { name: 'Todos', value: "" },
     { name: "Estudiante", value: "studient" },
     { name: "Professor", value: "proffesor" },
     { name: "Administrador", value: "admin" }
@@ -17,13 +16,13 @@ function Users() {
     const [searchParams] = useSearchParams()
     const { role } = Object.fromEntries([...searchParams])
 
-    const userRef = !!role ? query(collection(db, `users`), where("rol", "==", role), where("name", "array-contains", "saigo")) : collection(db, `users`)
+    const userRef = !!role ? query(collection(db, `users`), where("rol", "==", role)) : collection(db, `users`)
     const [data, loading, error] = useCollectionData(userRef)
     return (
         <section>
             <Header>
                 <Title title="Users" />
-                <Search />
+                <Search placeholder={"Encontrar usuario"} mainPath={"dashboard/users"} />
                 <User />
             </Header>
             <FilterBar values={roles} parameter="role" mainPath={"dashboard/users"} />

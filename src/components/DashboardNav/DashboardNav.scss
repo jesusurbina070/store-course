@@ -1,0 +1,41 @@
+.DashboardNav {
+  background-color: #17191A;
+  min-width: 300px; 
+  padding: 3.5rem 2.5rem;
+  
+  
+  &__title {
+    font-size: 38px;
+    margin-bottom: 60px;
+    color: white;
+  }
+  &__menu {
+
+  }
+  &__menulist {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    // background-color: brown;
+  }
+
+  &__listItem {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 210px;
+    padding: 1rem 2.2rem;
+    font-size: 18px;
+    text-decoration: none;  
+    border-radius: .4rem;
+    color: white;
+    font-weight: 600;
+  }
+  &__listItem.active {
+    background-color: rgba(147, 83, 207, .2);
+    color: #9353CF;
+  }
+
+  
+}
