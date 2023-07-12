@@ -1,0 +1,39 @@
+.ClassItem {
+  display: grid;
+  grid-template-columns: 5% 83% 7% 5%;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  align-items: center;
+  background-color: #202425;
+  margin: 1rem 0;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+.ClassItem__position {
+  justify-self: center;
+  font-weight: bold;
+  background-color: #191d1e;
+  padding: 0.6rem;
+  border-radius: 50%;
+  font-size: 20px;
+}
+.ClassItem__name {
+  padding-left: 2rem;
+  font-weight: 600;
+  font-size: 20px;
+}
+.ClassItem__duration {
+  justify-self: start;
+  align-self: center;
+  color: #8f8f8f;
+}
+.ClassItem__vector {
+  padding: 0.6rem;
+  font-size: 20px;
+  justify-self: center;
+  color: #5586d3;
+  background-color: #191d1e;
+  border-radius: 50%;
+}
+
+

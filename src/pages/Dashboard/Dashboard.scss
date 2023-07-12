@@ -2,11 +2,12 @@
     display: flex;
     background-color: #191D1E;
     color: #fff;
-    
+    height: 100vh;
+    overflow: hidden;
     &__content{
         width: 100%;  
-        padding: 3rem 5.1rem;  
-        min-height: 100vh;
+        padding: 3rem 5.1rem;
+        overflow-y: auto;  
     }
 }
 

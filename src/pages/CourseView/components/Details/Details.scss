@@ -1,0 +1,76 @@
+.Details {
+  display: flex;
+  width: 100%;
+  gap: 3rem;
+  &__info {
+    width: 50%;
+  }
+  &__row {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  &__categorie {
+    display: inline-flex;
+    gap: 6px;
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    padding: 0.4rem 1rem;
+    border-radius: 0.3rem;
+    background-color: rgba(147, 83, 207, 0.2);
+    color: #9353cf;
+  }
+  &__doubt {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #9353cf;
+  }
+  &__price {
+    color: #89d5a9;
+  }
+  &__description {
+    color: #8f8f8f;
+    margin-bottom: 2rem;
+    line-height: 1.5rem;
+    font-size: 15px;
+  }
+  &__imageContainer {
+    width: 50%;
+    max-height: 300px;
+    position: relative;
+    cursor: pointer;
+  }
+  &__image {
+    width: 100%;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+  &__button {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    background-color: #89d5a9;
+    border: none;
+    text-decoration: none;
+    color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  &__vector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(23, 25, 26, 0.3);
+    font-size: 40px;
+  }
+}

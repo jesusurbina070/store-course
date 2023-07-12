@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes} from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import { DashboardNav } from "../../components";
 import { RoleGuard } from "../../utilitis/role.guard";
 import { CreateCourse } from "../CreateCourse";
@@ -10,7 +10,6 @@ import CourseView from "../CourseView/CourseView";
 import "./Dashboard.scss";
 
 function Dashboard() {
-
   return (
     <main className="Dashboard">
       <DashboardNav />
@@ -21,13 +20,15 @@ function Dashboard() {
               <RoleGuard rolesAllowed={["admin", "professor", "studient"]} />
             }
           >
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/course/:id" element={<CourseView />} />
-          </Route>
-          <Route element={<RoleGuard rolesAllowed={["admin", "professor"]} />}>
-            <Route path="/add-course" element={<CreateCourse />} />
-            <Route path="/edit-course/:id" element={<EditCourse />} />
-          </Route>
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/courses/course/:id" element={<CourseView />} />
+              <Route
+                element={<RoleGuard rolesAllowed={["admin", "professor"]} />}
+              >
+                <Route path="/courses/add-course" element={<CreateCourse />} />
+                <Route path="/courses/edit-course/:id" element={<EditCourse />} />
+              </Route>
+            </Route>
           <Route element={<RoleGuard rolesAllowed={["admin"]} />}>
             <Route path="/users" element={<Users />} />
           </Route>

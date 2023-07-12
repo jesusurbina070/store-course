@@ -7,10 +7,12 @@ import {
 } from "react-firebase-hooks/firestore";
 import { EditCourseContext } from "../../EditCourse/context/editCourse.context";
 import { db } from "../../../Firebase/firebase";
+import { useSelector } from "react-redux";
 
 export const CourseViewContext = createContext();
 
 export const CourseViewProvider = ({ children }) => {
+  const { courses } = useSelector((state) => state.user);
   const params = useParams();
   const courseRef = doc(db, `courses/${params.id}`);
   const modulesRef = collection(db, `courses/${params.id}/modules/`);
@@ -18,25 +20,26 @@ export const CourseViewProvider = ({ children }) => {
   const [course] = useDocumentData(courseRef);
   const [modules] = useCollectionData(modulesRef);
   const [classes] = useCollectionData(classesRef);
+  const isBought = !!courses.filter((c) => c === course?.id).length
 
   return (
-    <CourseViewContext.Provider value={{
+    <CourseViewContext.Provider
+      value={{
         course,
         modules,
-        classes
-    }}>
-        {children}
-  </CourseViewContext.Provider>
-  )
-
-  
+        classes,
+        isBought,
+      }}
+    >
+      {children}
+    </CourseViewContext.Provider>
+  );
 };
 
-
 export const useCourseView = () => {
-    const context = useContext(CourseViewContext);
-    if (context === undefined) {
-      throw new Error("useEditCourse must be used within a EditCourseProvider");
-    }
-    return context;
-  };
+  const context = useContext(CourseViewContext);
+  if (context === undefined) {
+    throw new Error("useEditCourse must be used within a EditCourseProvider");
+  }
+  return context;
+};

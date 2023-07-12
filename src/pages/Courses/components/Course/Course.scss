@@ -9,7 +9,6 @@
     }
     &__categorie{
         display: inline-flex;
-        margin-top: 8px;
         gap: 6px;
         font-size: 14px;
         justify-content: center;
@@ -17,7 +16,7 @@
         background-color: red;
         padding: .4rem 1rem;
         border-radius: .3rem;
-        background-color: rgba(147, 83, 207, .2);
+        background-color: rgba(147, 83, 207, .2);   
         color: #9353CF;
     }
 
@@ -34,6 +33,19 @@
 
     
     }
+    &__row{
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between
+    }
+    &__price{
+        color: #89D5A9;
+    }
+
+    &__pencil{
+        color: #89D5A9;
+    }
     &__description{
         margin-top: 10px;
         overflow: hidden;
@@ -41,6 +53,5 @@
         -webkit-line-clamp: 2;  
         -webkit-box-orient: vertical;
         color: #8F8F8F;
-
     }
 }

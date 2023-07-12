@@ -1,0 +1,20 @@
+.Module {
+  &__classes {
+    margin: 1rem 0;
+  }
+
+  &__title {
+    display: inline;
+    position: absolute;
+    top: 15px;
+    padding: 0 1.2rem;
+    left: 45px;
+    font-size: 30px;
+    background-color: #191d1e;
+  }
+
+  &__titleContainer{
+    position: relative;
+    padding: 2rem 0;
+  }
+}

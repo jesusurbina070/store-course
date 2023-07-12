@@ -1,0 +1,18 @@
+.AddButton {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  background-color: #89d5a9;
+  border: none;
+  text-decoration: none;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.AddButton.other{
+    margin: 2rem 0 1rem 0;
+    font-size: 33px;
+    padding: 1rem 1.8rem;
+    align-self: center;
+}

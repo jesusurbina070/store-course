@@ -14,7 +14,7 @@ function EditCourse() {
     <div>
       <EditCourseProvider>
         <Header>
-          <Title title="Editar Usuario" />
+          <Title title="Editar Curso" />
           <User />
         </Header>
         <CourseEditView />

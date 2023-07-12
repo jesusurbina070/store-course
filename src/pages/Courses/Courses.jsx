@@ -46,9 +46,8 @@ function Courses() {
           parameter="categories"
           mainPath={"dashboard/courses"}
         />
-
         {rol === "admin" || rol === "proffesor" ? (
-          <NavLink to={`/dashboard/add-course`} className="createLink">
+          <NavLink to={`/dashboard/courses/add-course`} className="createLink">
             Subir Curso
           </NavLink>
         ) : null}

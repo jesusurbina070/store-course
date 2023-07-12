@@ -4,3 +4,17 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+
+::-webkit-scrollbar{
+    width: .8rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #202425;
+
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #17191A;
+    border-radius: 100vw;
+}

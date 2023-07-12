@@ -179,3 +179,13 @@ export const uploadCourseImage = async (file) => {
     console.log(err);
   }
 };
+
+export const addCourse = async (id, course) => {
+  try{
+    await updateDoc(doc(db, `users/${id}`), {
+      courses: arrayUnion(`${course}`),
+    })
+  }catch(err){
+    console.log(err)
+  }
+}
